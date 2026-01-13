@@ -13,6 +13,7 @@ int row=0;
 int column=0;
 char board[3][3];
 char whoWin;
+int moveCount=0;
 
 char choicedPlayer;
 
@@ -97,54 +98,27 @@ void terminalClear()
 
 void winningQuestioner()
 {
-	int i,j,k;
+	int i;
 	
-	for(i=0;i<3;i++)
+	for(i=0; i<3; i++)
 	{
-		if(board[i][0] == 'X' && board[i][1] == 'X' && board[i][2] == 'X')
+		if(board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ')
+        {
+        	whoWin = board[i][0];
+		}
+		if(board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != ' ')
 		{
-			whoWin = 'X';
-		}	
+			whoWin = board[0][i];
+		}
 	}
 	
-	for(i=0;i<3;i++)
+	if(board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ')
 	{
-		if(board[i][0] == 'O' && board[i][1] == 'O' && board[i][2] == 'O')
-		{	
-			whoWin = 'O';
-		}	
+		whoWin = board[0][0];
 	}
-	
-	for(j=0;j<3;j++)
+	if(board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ' ')
 	{
-		if(board[0][j] == 'X' && board[1][j] == 'X' && board[2][j] == 'X')
-		{
-			whoWin = 'X';
-		}	
-	}
-	
-	for(j=0;j<3;j++)
-	{
-		if(board[0][j] == 'O' && board[1][j] == 'O' && board[2][j] == 'O')
-		{	
-			whoWin = 'O';
-		}	
-	}
-	if(board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O')
-	{
-		whoWin = 'O';
-	}
-	if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')
-	{
-		whoWin = 'X';
-	}
-	if(board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')
-	{
-		whoWin = 'O';
-	}
-	if(board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')
-	{
-		whoWin = 'X';
+		whoWin = board[0][2];
 	}
 		
 }
@@ -159,16 +133,19 @@ void cursorControl()
 		terminalClear();
 		printBoard();
 		winningQuestioner();
-		if(whoWin =='X')
+		if(moveCount==9)
 		{
-			printf("Congratulations, X won!");
+			printf("\n\033[33mIt's a DRAW!\033[0m\n");
+			getch();
 			break;
 		}
-		if(whoWin == 'O')
+		if(whoWin != ' ')
 		{
-			printf("Congratulations, O won!");
+			printf("\n\033[32mCongratulations!\033[0m Player %c WINS!\n", whoWin);
+			getch();
 			break;
 		}
+		
 		printf("\nActive Cell: [%d , %d]", row, column); // For Debug
         printf("\n[W-A-S-D] Move  |  [F] Select  |  [Q] Quit");
         printf("\nSelection: ");
@@ -203,18 +180,19 @@ void cursorControl()
 			}
 			else
 			{
+				board[row][column] = choicedPlayer;
 				if(choicedPlayer == 'X')
 	        	{
+	        		moveCount++;
 	        		choicedPlayer = 'O';
-	        		board[row][column] = 'X';
 		            printf("\nSelected!\n");
 		            Sleep(100);
 				}
 				
 				else if(choicedPlayer == 'O')
 	        	{
+	        		moveCount++;
 	        		choicedPlayer = 'X';
-	        		board[row][column] = 'O';
 		            printf("\nSelected!\n");
 		            Sleep(100);
 				}	
