@@ -138,6 +138,15 @@ void winningQuestioner()
 	{
 		whoWin = 'X';
 	}
+	if(board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')
+	{
+		whoWin = 'O';
+	}
+	if(board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')
+	{
+		whoWin = 'X';
+	}
+		
 }
 
 void cursorControl()
@@ -192,21 +201,23 @@ void cursorControl()
         		printf("\n\033[31mERROR:\033[0m This box is already full! Please move it elsewhere.\n");
        	 		Sleep(1500); // Kullanýcý hatayý okuyabilsin diye bekle
 			}
-        	
-        	if(choicedPlayer == 'X')
-        	{
-        		choicedPlayer = 'O';
-        		board[row][column] = 'X';
-	            printf("\nSelected!\n");
-	            Sleep(100);
-			}
-			
-			else if(choicedPlayer == 'O')
-        	{
-        		choicedPlayer = 'X';
-        		board[row][column] = 'O';
-	            printf("\nSelected!\n");
-	            Sleep(100);
+			else
+			{
+				if(choicedPlayer == 'X')
+	        	{
+	        		choicedPlayer = 'O';
+	        		board[row][column] = 'X';
+		            printf("\nSelected!\n");
+		            Sleep(100);
+				}
+				
+				else if(choicedPlayer == 'O')
+	        	{
+	        		choicedPlayer = 'X';
+	        		board[row][column] = 'O';
+		            printf("\nSelected!\n");
+		            Sleep(100);
+				}	
 			}
         }
         else if(selectedDirection != 'Q' || selectedDirection != 'q')
