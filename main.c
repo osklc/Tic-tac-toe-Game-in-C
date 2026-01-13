@@ -157,6 +157,7 @@ void cursorControl()
 	while(selectedDirection != 'Q' && selectedDirection != 'q')
 	{
 		terminalClear();
+		printBoard();
 		winningQuestioner();
 		if(whoWin =='X')
 		{
@@ -168,7 +169,6 @@ void cursorControl()
 			printf("Congratulations, O won!");
 			break;
 		}
-		printBoard();
 		printf("\nActive Cell: [%d , %d]", row, column); // For Debug
         printf("\n[W-A-S-D] Move  |  [F] Select  |  [Q] Quit");
         printf("\nSelection: ");
