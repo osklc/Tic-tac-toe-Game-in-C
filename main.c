@@ -38,7 +38,6 @@ int main()
 	}
 	
 	terminalClear();
-	//Sleep(1000);
 	boardFiller();
 	cursorControl();
 	
@@ -198,15 +197,15 @@ void cursorControl()
 				}	
 			}
         }
-        else if(selectedDirection != 'Q' || selectedDirection != 'q')
+        else if(selectedDirection == 'Q' || selectedDirection == 'q')
         {
         	printf("\nProgram is closed");
         	Sleep(200);
 		}
 		else
 		{
-			terminalClear();
 			printf("\nWarning: %c is not a valid value. Please enter valid input!\n", selectedDirection);
+			Sleep(1000);
 		}
 	}
 }
