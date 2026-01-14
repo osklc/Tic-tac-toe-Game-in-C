@@ -21,8 +21,8 @@ char choicedPlayer;
 int main() 
 {
 	printf("\033[34m\033[1mWelcome to Tic-tac-toe Game in C\033[0m\n");
-	Sleep(300);
-	printf("Which one would you like to start with, X or O?\n");
+	Sleep(400);
+	printf("Which one would you like to start with, X or O?");
 	while(1)
 	{
 		choicedPlayer = getch();
@@ -33,7 +33,7 @@ int main()
 		}
 		else
 		{
-			printf("\n\033[31mERROR:\033[0m Invalid input! Please enter X or O!\n");
+			printf("\n\033[3m\033[31mERROR:\033[0m Invalid input! Please enter X or O!");
 		}
 	}
 	
@@ -134,13 +134,13 @@ void cursorControl()
 		winningQuestioner();
 		if(moveCount==9)
 		{
-			printf("\n\033[33mIt's a DRAW!\033[0m\n");
+			printf("\n\033[3m\033[33mIt's a DRAW!\033[0m");
 			getch();
 			break;
 		}
 		if(whoWin != ' ')
 		{
-			printf("\n\033[32mCongratulations!\033[0m Player %c WINS!\n", whoWin);
+			printf("\n\033[3m\033[32mCongratulations!\033[0m Player %c WINS!", whoWin);
 			getch();
 			break;
 		}
@@ -174,7 +174,7 @@ void cursorControl()
         {
         	if(board[row][column] != ' ')
         	{
-        		printf("\n\033[31mERROR:\033[0m This box is already full! Please move it elsewhere.\n");
+        		printf("\n\033[3m\033[31mERROR:\033[0m This box is already full! Please move it elsewhere.");
        	 		Sleep(1500); // Kullanýcý hatayý okuyabilsin diye bekle
 			}
 			else
@@ -204,7 +204,7 @@ void cursorControl()
 		}
 		else
 		{
-			printf("\nWarning: %c is not a valid value. Please enter valid input!\n", selectedDirection);
+			printf("\n\033[3m\033[31mERROR:\033[0m %c is not a valid value. Please enter valid input!", selectedDirection);
 			Sleep(1000);
 		}
 	}
