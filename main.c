@@ -153,29 +153,29 @@ void cursorControl()
 		if(selectedDirection == 'W' || selectedDirection == 'w')
         {
             row--; 
-            if(row < 0) row = 0; // En üste çarparsa 0'da kalsýn
+            if(row < 0) row = 0;
         }
         else if(selectedDirection == 'S' || selectedDirection == 's')
         {
             row++;
-            if(row > 2) row = 2; // En alta çarparsa 2'de kalsýn
+            if(row > 2) row = 2;
         }
         else if(selectedDirection == 'A' || selectedDirection == 'a')
         {
             column--;
-            if(column < 0) column = 0; // Sola çarparsa 0'da kalsýn
+            if(column < 0) column = 0;
         }
         else if(selectedDirection == 'D' || selectedDirection == 'd')
         {
             column++;
-            if(column > 2) column = 2; // Saða çarparsa 2'de kalsýn
+            if(column > 2) column = 2;
         }
         else if(selectedDirection == 'F' || selectedDirection == 'f')
         {
         	if(board[row][column] != ' ')
         	{
         		printf("\n\033[3m\033[31mERROR:\033[0m This box is already full! Please move it elsewhere.");
-       	 		Sleep(1500); // Kullanýcý hatayý okuyabilsin diye bekle
+       	 		Sleep(1500);
 			}
 			else
 			{
