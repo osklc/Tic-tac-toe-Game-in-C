@@ -8,6 +8,7 @@ void cursorControl();
 void printBoard();
 void boardFiller();
 void winningQuestioner();
+void hideCursor();
 
 int row=0;
 int column=0;
@@ -20,6 +21,7 @@ char choicedPlayer;
 
 int main() 
 {
+	hideCursor();
 	printf("\033[34m\033[1mWelcome to Tic-tac-toe Game in C\033[0m\n");
 	Sleep(400);
 	printf("Which one would you like to start with, X or O?");
@@ -42,6 +44,14 @@ int main()
 	cursorControl();
 	
 	return 0;
+}
+
+void hideCursor() {
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO info;
+    info.dwSize = 100;
+    info.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &info);
 }
 
 void boardFiller()
